@@ -10,9 +10,9 @@
 
 @implementation SAFSnakePart
 
-@synthesize prev;
-@synthesize next;
-@synthesize lastMove;
+//@synthesize prev;
+//@synthesize next;
+//@synthesize lastMove;
 @synthesize direction;
 
 @end

@@ -14,8 +14,10 @@
 @interface SAFClassicSnakeScene : SKScene
 {
     int snakeLength;
-    SAFSnakePart *snakeHead;
+    //SAFSnakePart *snakeHead;
     SAFPowerUp *powerUp;
+    //SAFSnakePart *snakeTail;
+    NSMutableArray* snake;
 }
 @property NSTimeInterval timeOfLastMove;
 @property NSTimeInterval timePerMove;

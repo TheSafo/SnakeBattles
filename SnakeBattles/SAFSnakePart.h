@@ -9,9 +9,9 @@
 #import "SAFGridObject.h"
 
 @interface SAFSnakePart : SAFGridObject
-@property (nonatomic)SAFSnakePart *prev;
-@property (nonatomic)SAFSnakePart *next;
-@property (nonatomic)NSString *lastMove;
+//@property (nonatomic)SAFSnakePart *prev;
+//@property (nonatomic)SAFSnakePart *next;
+//@property (nonatomic)NSString *lastMove;
 @property (nonatomic) int direction;
 
 @end
