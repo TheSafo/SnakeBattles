@@ -17,11 +17,6 @@
 
 
 
-/* TODO
- Fix multisnake movement
- Lose if collide with a piece
-*/
-
 static const uint32_t snakePartCategory     =  0x1 << 0;
 static const uint32_t powerUpCategory       =  0x1 << 1;
 
@@ -317,8 +312,12 @@ static const uint32_t powerUpCategory       =  0x1 << 1;
     {
         SAFSnakePart* oldTail =((SAFSnakePart *) [snake objectAtIndex:snakeLength-1]);
         [snake removeObjectAtIndex:snakeLength-1];
-    
+        
         [oldTail setPosition:CGPointMake(oldLoc.x, oldLoc.y)];
+        SAFCoord* tempLoc = [SAFCoord alloc];
+        tempLoc.x = oldLoc.x;
+        tempLoc.y = oldLoc.y;
+        oldTail.loc = tempLoc;
         [snake insertObject:oldTail atIndex:1];
     }
     self.timeOfLastMove = currentTime;
@@ -328,7 +327,7 @@ static const uint32_t powerUpCategory       =  0x1 << 1;
 {
     SAFSnakePart* snakeHead = [snake objectAtIndex:0];
     int direction = snakeHead.direction;
-    SKAction *rotate = [SKAction rotateByAngle:M_PI/2 duration:.1];
+    SKAction *rotate = [SKAction rotateByAngle:M_PI/2 duration:.05];
     [snakeHead runAction:rotate];
     if(direction == 0)
         snakeHead.direction = 270;
@@ -340,7 +339,7 @@ static const uint32_t powerUpCategory       =  0x1 << 1;
 {
     SAFSnakePart* snakeHead = [snake objectAtIndex:0];
     int direction = snakeHead.direction;
-    SKAction *rotate = [SKAction rotateByAngle:-M_PI/2 duration:.1];
+    SKAction *rotate = [SKAction rotateByAngle:-M_PI/2 duration:.05];
     [snakeHead runAction:rotate];
     if(direction == 270)
         snakeHead.direction = 0;
